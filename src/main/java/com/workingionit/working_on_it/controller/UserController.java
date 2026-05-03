@@ -1,5 +1,7 @@
 package com.workingionit.working_on_it.controller;
 
+import com.workingionit.working_on_it.dto.LoginRequestDTO;
+import com.workingionit.working_on_it.dto.LoginResponseDTO;
 import com.workingionit.working_on_it.dto.RegisterRequestDTO;
 import com.workingionit.working_on_it.dto.UserResponseDTO;
 import com.workingionit.working_on_it.service.UserService;
@@ -22,4 +24,13 @@ public class UserController {
         UserResponseDTO response = userService.registerUser(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+
+   @PostMapping("/login")
+    public ResponseEntity<LoginResponseDTO> login(@Valid @RequestBody LoginRequestDTO dto) {
+        LoginResponseDTO response = userService.loginUser(dto);
+        return ResponseEntity.ok(response);
+    }
 }
+
+
