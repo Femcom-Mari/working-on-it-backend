@@ -42,18 +42,18 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
+        public List<GoalResponseDTO> getAllGoals() {
+        log.info("Getting all goals");
+        return goalRepository.findAll()
+            .stream()
+            .map(goalMapper::toResponseDTO)
+            .toList();
+}
+
+    @Override
     public List<GoalResponseDTO> getGoalsByUser(Integer userId) {
         log.info("Getting goals for user id: {}", userId);
         return goalRepository.findByUserId(userId)
-                .stream()
-                .map(goalMapper::toResponseDTO)
-                .toList();
-    }
-
-    @Override
-    public List<GoalResponseDTO> getGoalsByCity(String localization) {
-        log.info("Getting goals for city: {}", localization);
-        return goalRepository.findByUserLocalization(localization)
                 .stream()
                 .map(goalMapper::toResponseDTO)
                 .toList();

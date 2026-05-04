@@ -10,6 +10,5 @@ import java.util.List;
 public interface GoalRepository extends JpaRepository<Goal, Integer> {
 
     List<Goal> findByUserId(Integer userId);
-    List<Goal> findByUserLocalization(String localization);
     List<Goal> findByUserIdAndStatus(Integer userId, GoalStatus status);
 }

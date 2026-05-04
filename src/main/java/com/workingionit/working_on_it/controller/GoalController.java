@@ -33,10 +33,11 @@ public class GoalController {
         return ResponseEntity.ok(goalService.getGoalsByUser(userId));
     }
 
-    @GetMapping("/city/{localization}")
-    public ResponseEntity<List<GoalResponseDTO>> getGoalsByCity(@PathVariable String localization) {
-        return ResponseEntity.ok(goalService.getGoalsByCity(localization));
+    @GetMapping
+    public ResponseEntity<List<GoalResponseDTO>> getAllGoals() {
+    return ResponseEntity.ok(goalService.getAllGoals());
     }
+
 
     @PatchMapping("/{goalId}/complete")
     public ResponseEntity<GoalResponseDTO> completeGoal(
